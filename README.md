@@ -1,10 +1,11 @@
-🥝的博客源码，目前已经开源啦！！！暂定名为**hexo-theme-Fomalhaut**，原作者网站：www.fomal.cc 
+🥝的博客源码，！！！暂定名为**hexo-theme-Fomalhaut**，原作者网站：www.fomal.cc 
 
 
 # 在记事本中逐个记录，方便替换，以下为我的示例
 [Blogroot]：D:\developer\ravanlaBlog\Ravanla.github.io
 
-[SourceRepo]：Ravanla/Ravanla.github.io
+[SourceRepo]：Ravanla/RavanlaGithubio
+
 
 [SiteBlogRepo]
   [GithubBlogRepo]: Ravanla.github.io
