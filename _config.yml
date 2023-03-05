@@ -140,14 +140,15 @@ deploy:
 #   indexName: index_1
 
 # hexo-algoliasearch(可以匹配内容)
+# https://www.algolia.com/account/api-keys/all?applicationId=6235N3JVZV
 algolia:
-  appId: ""
-  apiKey: ""
-  adminApiKey: ""
-  chunkSize: 
-  indexName: ""
+  appId: "6235N3JVZV"
+  apiKey: "e7d6bb9c2764208031cd6362e95e2f38"
+  adminApiKey: "fb89f2762d053b55e982191e6dd49c41"
+  chunkSize: 5000
+  indexName: "MyBlog"
   fields:
-    - content:strip:truncate,0,30000
+    - content:strip:truncate,0,500
     - excerpt:strip
     - gallery
     - permalink

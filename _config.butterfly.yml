@@ -74,7 +74,7 @@ social:
 
 # Algolia search
 algolia_search:
-  enable: false
+  enable: true
   hits:
     per_page: 5
   labels:
@@ -84,7 +84,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: true
+  enable: false
   preload: true
   CDN:
 
