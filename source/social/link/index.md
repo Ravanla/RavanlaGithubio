@@ -8,7 +8,7 @@ type: "link"
 {% tabs link %}
 <!-- tab 🙋 butterfly-💭candy -->
 ```yml
-    - name: Ravanla🥝
+    - name: Ravanla🐈‍⬛
       link: https://www.fomal.cc/
       avatar: https://www.fomal.cc/assets/avatar.webp
       descr: Instead of looking up at the starry sky, it is better to be a star picker.
@@ -19,12 +19,12 @@ type: "link"
 <!-- tab 🥗Volantis -->
 ```JSON
 {
-  "title": "Ravanla🥝",
+  "title": "Ravanla🐈‍⬛",
   "screenshot": "https://source.fomal.cc/siteshot/www.fomal.cn.jpg",
   "url": "https://www.fomal.cc/",
   "avatar": "https://www.fomal.cc/assets/avatar.webp",
   "description": "Instead of looking up at the starry sky, it is better to be a star picker.",
-  "keywords": "Ravanla🥝"
+  "keywords": "Ravanla🐈‍⬛"
 }
 ```
 <!-- endtab -->
@@ -33,12 +33,12 @@ type: "link"
 
 | 名称       | 数值                                              |
 | ---------- | ------------------------------------------------- |
-| 站点名称   | Ravanla🥝                                          |
+| 站点名称   | Ravanla🐈‍⬛                                         |
 | 站点截图   | https://source.fomal.cc/siteshot/www.fomal.cn.jpg |
 | 站点链接   | https://www.fomal.cc/                             |
 | 站长头像   | https://www.fomal.cc/assets/avatar.webp           |
 | 站点描述   | Future is now🍭🍭🍭                                  |
-| 站点关键词 | Ravanla🥝,个人博客,代码                            |
+| 站点关键词 | Ravanla🐈‍⬛,个人博客,代码                           |
 
 <!-- endtab -->
 {% endtabs %}

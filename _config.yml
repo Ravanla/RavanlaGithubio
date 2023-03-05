@@ -3,18 +3,28 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Ravanla🥝
+title: Ravanla🐈‍⬛
 subtitle: 
 description: 'Instead of looking up at the starry sky, it is better to be a star picker.'
-keywords: 'Java,MySQL,算法,代码,博客,Butterfly,Hexo,Ravanla🥝,wowSA'
-author: Ravanla🥝
+keywords: 'Java,MySQL,算法,代码,博客,Butterfly,Hexo,Ravanla🐈‍⬛,wowSA'
+author: Ravanla🐈‍⬛
 language: zh-CN
 timezone: ''
 
-# abbrlink config
+## abbrlink config
 abbrlink:
-  alg: crc32      #support crc16(default) and crc32
-  rep: hex        #support dec(default) and hex
+  alg: crc32      #support crc16(default) and crc32 进制
+  rep: hex        #support dec(default) and hex  算法
+  drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
+  ## Generate categories from directory-tree
+  ## depth: the max_depth of directory-tree you want to generate, should > 0
+  auto_category:
+     enable: true  #true(default)
+     depth:        #3(default)
+     over_write: false 
+  auto_title: false #enable auto title, it can auto fill the title by path
+  auto_date: false #enable auto date, it can auto fill the date by time today
+  force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink.
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'

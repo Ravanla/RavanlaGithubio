@@ -551,7 +551,7 @@ background:
   #【必选】默认背景 
   default: var(--default-bg)
   #【可选】PC端夜间模式背景 
-  # darkmode: var(--darkmode-bg)
+  darkmode: var(--darkmode-bg)
   #【可选】移动端日间默认背景 
   mobileday: var(--mobileday-bg)
   #【可选】移动端夜间模式背景 
@@ -677,7 +677,7 @@ subtitle:
   source: false
   # 如果關閉打字效果，subtitle 只會顯示 sub 的第一行文字
   sub:
-    - "Welcome to Ravanla's Blog!🥝"
+    - "Welcome to Ravanla's Blog!�‍⬛"
     - "Hope you have a nice day!🍭🍭🍭"
 
 # Loading Animation (加載動畫)
@@ -696,7 +696,7 @@ aside:
   hide: false
   button: true
   mobile: true # display on mobile
-  position: left # left or right
+  position: right # left or right
   display:
     archive: true
     tag: true
