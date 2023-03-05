@@ -3211,7 +3211,7 @@ function toggleRightside() {
 
 // 透明度调节滑块
 if (localStorage.getItem("transNum") == undefined) {
-  localStorage.setItem("transNum", 95);
+  localStorage.setItem("transNum", 95); // 默认透明度
 }
 var curTransNum = localStorage.getItem("transNum");
 var curTransMini = curTransNum * 0.95;
@@ -3344,7 +3344,7 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   // --default-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains-3840x2160-lake-5k-17071.jpg);
-    
+  // --default-bg: url(https://tuchuang.voooe.cn/images/2023/03/05/mountains2.png);
   document.getElementById("defineBg").innerText = `:root{
     --default-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains-3840x2160-lake-5k-17071.jpg);
     --darkmode-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains_landscape_nature_mountain_4442x2961.jpg);

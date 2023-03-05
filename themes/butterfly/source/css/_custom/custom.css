@@ -247,14 +247,19 @@ div#archive {
 
 /* 导航栏颜色 */
 #page-header.nav-fixed #nav {
-  background: linear-gradient(60deg, #ffd7e4 0, #c8f1ff 93%);
-  opacity: 0.95;
+  /* background: linear-gradient(60deg, #ffd7e4 0, #c8f1ff 93%); */
+  /* background: linear-gradient(60deg, #9abbcf 0, #c8f1ff 93%); */
+  /* background: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55); 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%); */
+  background: linear-gradient(44deg,#abdcff,#0396ff);
+  opacity: 0.95; /*导航栏 默认透明度*/
   backdrop-filter: var(--backdrop-filter);
 }
 [data-theme="dark"] #page-header.nav-fixed #nav {
   background: rgba(0, 0, 0, 0.95) !important;
 }
 
+/* 一图流样式 */
 /* 夜间模式遮罩 */
 [data-theme="dark"] #recent-posts > .recent-post-item,
 [data-theme="dark"] #aside-content .card-widget,
@@ -284,6 +289,7 @@ div#archive {
   background: transparent !important;
 }
 
+
 /* 阅读模式 */
 .read-mode #aside-content .card-widget {
   background: rgba(158, 204, 171, 0.5) !important;
@@ -301,6 +307,7 @@ div#archive {
   background: rgba(25, 25, 25, 0.9) !important;
   color: #ffffff;
 }
+/* 一图流样式end*/
 
 /* 评论框  */
 .vwrap {
@@ -898,7 +905,7 @@ h6::before {
 
 /* 标题增强 */
 #site-name::before {
-  opacity: 0;
+  opacity: 0; /*左上角透明度*/
   background-color: var(--theme-color) !important;
   border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -1196,10 +1203,12 @@ button#go-up:hover #percent {
     background-position: 0% 50%;
   }
 } */
-
+/* https://tuchuang.voooe.cn/images/2023/03/05/mountains1.png
+https://tuchuang.voooe.cn/images/2023/03/05/mountains2.png */
 /* 个人信息卡片背景图 */
 [data-theme="light"] #aside-content > .card-widget.card-info {
-  background-image: url(https://tuchuang.voooe.cn/images/2023/02/28/springBg.png);
+  /* background-image: url(https://tuchuang.voooe.cn/images/2023/02/28/springBg.png); */
+  background-image: url(https://tuchuang.voooe.cn/images/2023/03/05/mountains1.png);
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
