@@ -3343,6 +3343,8 @@ let unsplash = "url(https://source.unsplash.com/random/1920x1080/)";
 if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
+  // --default-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains-3840x2160-lake-5k-17071.jpg);
+    
   document.getElementById("defineBg").innerText = `:root{
     --default-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains-3840x2160-lake-5k-17071.jpg);
     --darkmode-bg: url(https://tuchuang.voooe.cn/images/2023/03/03/mountains_landscape_nature_mountain_4442x2961.jpg);

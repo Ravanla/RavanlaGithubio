@@ -120,7 +120,7 @@ avatar:
 disable_top_img: false
 
 # The banner image of home page
-index_img:
+index_img: 
 
 # If the banner of page not setting, it will show the top_img
 default_top_img:
@@ -550,7 +550,7 @@ background:
   #【必选】默认背景 
   default: var(--default-bg)
   #【可选】PC端夜间模式背景 
-  darkmode: var(--darkmode-bg)
+  # darkmode: var(--darkmode-bg)
   #【可选】移动端日间默认背景 
   mobileday: var(--mobileday-bg)
   #【可选】移动端夜间模式背景 
