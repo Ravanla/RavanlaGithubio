@@ -3,10 +3,11 @@ title: 朋友圈
 date: 2022-09-05 18:00:00
 comments: false
 ---
-## 先要用宝塔建网
+# 宝塔建网
 这就需要域名了，站长暂时没有，以后再弄
 [创建朋友圈API](https://blog.zhheo.com/p/4e18a507.html)
 [另一个链接](https://www.fomal.cc/posts/d1927166.html)
+
 <style>
   #cf-container {
     background: transparent !important;

@@ -6,9 +6,9 @@ comments: false
 
 {% timeline 小站建设进程 %}
 
-<!-- timeline 2023-2-28-->
+<!-- timeline 2021-2-28-->
 
-1. 主题开源啦
+1. 建好网站啦
 
 <!-- endtimeline -->
 

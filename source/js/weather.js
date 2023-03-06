@@ -1,41 +1,17 @@
-{/* <div id="he-plugin-simple"></div>
-<script> */}
-// WIDGET = { // 北京
-//   "CONFIG": {
-//     "modules": "01234",
-//     "background": "1",
-//     "tmpColor": "FFFFFF",
-//     "tmpSize": "18",
-//     "cityColor": "FFFFFF",
-//     "citySize": "18",
-//     "aqiColor": "FFFFFF",
-//     "aqiSize": "18",
-//     "weatherIconSize": "24",
-//     "alertIconSize": "16",
-//     "padding": "10px 15px 10px 15px",
-//     "shadow": "0",
-//     "language": "auto",
-//     "borderRadius": "10",
-//     "fixed": "false",
-//     "vertical": "top",
-//     "horizontal": "left",
-//     "key": "69c21d9044b04aaf981b304c151f64c0"
-//   }
-// }
-{/* <div id="he-plugin-simple"></div>
-<script> */}
+// document.addEventListener('pjax:complete', tonav);
+// document.addEventListener('DOMContentLoaded', tonav);
 WIDGET = { // 深圳南山
   "CONFIG": {
     "modules": "01234",
     "background": "5",
     "tmpColor": "FFFFFF",
-    "tmpSize": "18",
+    "tmpSize": "16",
     "cityColor": "FFFFFF",
-    "citySize": "18",
+    "citySize": "16",
     "aqiColor": "FFFFFF",
-    "aqiSize": "18",
-    "weatherIconSize": "20",
-    "alertIconSize": "18",
+    "aqiSize": "16",
+    "weatherIconSize": "18",
+    "alertIconSize": "16",
     "padding": "10px 10px 10px 10px",
     "shadow": "1",
     "language": "auto",
@@ -47,7 +23,23 @@ WIDGET = { // 深圳南山
     "key": "ec636ae2d195490ca3fd894bde343c60"
   }
 }
-{/* </script>
-<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> */}
-{/* </script>
-<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> */}
+// //响应pjax
+// function tonav() {
+//     document.getElementById("he-plugin-simple").setAttribute("style", "display:none");
+//     var position = $(window).scrollTop();
+//     $(window).scroll(function () {
+//         var scroll = $(window).scrollTop();
+//         if (scroll < position) { // < 向上滚动显示
+//             document.getElementById("he-plugin-simple").setAttribute("style", "");
+//             // document.getElementsByClassName("s-sticker")[1].setAttribute("style", "display:none!important");
+//         } else {
+//             // document.getElementsByClassName("s-sticker")[1].setAttribute("style", "");
+//             document.getElementById("he-plugin-simple").setAttribute("style", "display:none");
+//         }
+//         position = scroll;
+//     });
+//     //修复没有弄右键菜单的童鞋无法回顶部的问题
+//     // document.getElementById("page-name").innerText = document.title.split(" | Ravanla🐈‍⬛")[0];
+// }
+// 在themes\butterfly\layout\includes\header\menu_item.pug 要设置缓存才能在每个页面实现上述功能
+// 在source\js\fomal.js抄的滚动js

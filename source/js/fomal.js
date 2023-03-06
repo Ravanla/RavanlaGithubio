@@ -44,7 +44,7 @@ function tonav() {
   var position = $(window).scrollTop();
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
-    if (scroll > position) {
+    if (scroll > position) { // 向下滚动显示
       document.getElementById("name-container").setAttribute("style", "");
       document.getElementsByClassName("menus_items")[1].setAttribute("style", "display:none!important");
     } else {
@@ -54,7 +54,7 @@ function tonav() {
     position = scroll;
   });
   //修复没有弄右键菜单的童鞋无法回顶部的问题
-  document.getElementById("page-name").innerText = document.title.split(" | Ravanla🛸")[0];
+  document.getElementById("page-name").innerText = document.title.split(" | Ravanla🐈‍⬛")[0];
 }
 
 function scrollToTop() {
@@ -1121,7 +1121,7 @@ function createtime1() {
   var dnum = Math.floor(days);
 
   var ascll = [
-    `欢迎来到Ravanla🛸的博客!`,
+    `欢迎来到Ravanla🐈‍⬛的博客!`,
     `Instead of looking up at the starry sky, it is better to be a star picker.`,
     `
 /***
@@ -1177,7 +1177,7 @@ function createtime2() {
   setTimeout(
     console.warn.bind(
       console,
-      "%c ⚡ Powered by Ravanla🛸 %c 你正在访问Ravanla🛸の小家",
+      "%c ⚡ Powered by Ravanla🐈‍⬛ %c 你正在访问Ravanla🐈‍⬛の小家",
       "color:white; background-color:#f0ad4e",
       ""
     )
@@ -1287,8 +1287,8 @@ function share_() {
   try {
     // 截取标题
     var title = document.title;
-    var subTitle = title.endsWith("| Ravanla🛸") ? title.substring(0, title.length - 14) : title;
-    navigator.clipboard.writeText('Ravanla🛸的站内分享\n标题：' + subTitle + '\n链接：' + url + '\n欢迎来访！🍭🍭🍭');
+    var subTitle = title.endsWith("| Ravanla🐈‍⬛") ? title.substring(0, title.length - 14) : title;
+    navigator.clipboard.writeText('Ravanla🐈‍⬛的站内分享\n标题：' + subTitle + '\n链接：' + url + '\n欢迎来访！🍭🍭🍭');
     new Vue({
       data: function () {
         this.$notify({
@@ -2540,18 +2540,18 @@ if (m == 12 && dd == 25) {//圣诞节
     sessionStorage.setItem("isPopupWindow", "1");
   }
 }
-if (m == 8 && dd == 11) {//站长生日
-  if (sessionStorage.getItem("isPopupWindow") != "1") {
-    Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🛸");
-    sessionStorage.setItem("isPopupWindow", "1");
-  }
-}
-if (m == 6 && dd == 30) {//小猫咪生日
-  if (sessionStorage.getItem("isPopupWindow") != "1") {
-    Swal.fire("祝小猫咪" + (y - 1999).toString() + "岁生日快乐！🐱");
-    sessionStorage.setItem("isPopupWindow", "1");
-  }
-}
+// if (m == 8 && dd == 11) {//站长生日
+//   if (sessionStorage.getItem("isPopupWindow") != "1") {
+//     Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🐱");
+//     sessionStorage.setItem("isPopupWindow", "1");
+//   }
+// }
+// if (m == 6 && dd == 30) {//小猫咪生日
+//   if (sessionStorage.getItem("isPopupWindow") != "1") {
+//     Swal.fire("祝小猫咪" + (y - 1999).toString() + "岁生日快乐！🐱");
+//     sessionStorage.setItem("isPopupWindow", "1");
+//   }
+// }
 
 //传统节日部分
 
@@ -2611,6 +2611,24 @@ if ((lunar["IMonthCn"] == "九月" && lunar["IDayCn"] == "初九")) {
   //重阳节
   if (sessionStorage.getItem("isPopupWindow") != "1") {
     Swal.fire("重阳节快乐\n独在异乡为异客，每逢佳节倍思亲");
+    sessionStorage.setItem("isPopupWindow", "1");
+  }
+}
+if ((lunar["IMonthCn"] == "六月" && lunar["IDayCn"] == "二十三")) {//站长生日
+  if (sessionStorage.getItem("isPopupWindow") != "1") {
+    Swal.fire("祝站长" + (y - 1997).toString() + "岁生日快乐！🐱");
+    sessionStorage.setItem("isPopupWindow", "1");
+  }
+}
+if ((lunar["IMonthCn"] == "十一月" && lunar["IDayCn"] == "十五")) {//SA生日
+  if (sessionStorage.getItem("isPopupWindow") != "1") {
+    Swal.fire("祝SA" + (y - 2000).toString() + "岁生日快乐！🐱");
+    sessionStorage.setItem("isPopupWindow", "1");
+  }
+}
+if ((lunar["IMonthCn"] == "四月" && lunar["IDayCn"] == "二七")) {//老妈生日
+  if (sessionStorage.getItem("isPopupWindow") != "1") {
+    Swal.fire("祝老妈" + (y - 1972).toString() + "岁生日快乐！🐱");
     sessionStorage.setItem("isPopupWindow", "1");
   }
 }

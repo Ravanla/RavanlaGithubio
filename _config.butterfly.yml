@@ -26,6 +26,7 @@ menu:
     旧时光: /site/time/ || icon-xianxingshalou || faa-tada
   个人 || icon-maoliang || faa-tada || hide:
     唠叨: /personal/bb/ || icon-qunliaotian || faa-tada
+    相册: /box/gallery/ ||icon-tubiaozhizuomoban || faa-tada
     wowSA: /personal/love/ || icon-love-sign || faa-tada
     关于: /personal/about/ || icon-paperplane || faa-tada
 
@@ -739,6 +740,11 @@ aside:
     post_count: true
     last_push_date: true
     sort_order: # Don't modify the setting unless you know how it works
+  # card_weather:
+  #   enable: true
+  #   post_count: true
+  #   last_push_date: true
+  #   sort_order: # Don't modify the setting unless you know how it works
   card_weibo:
     enable: false
   card_friend_link: #友链通讯录

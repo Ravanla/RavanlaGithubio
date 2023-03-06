@@ -252,12 +252,32 @@ div#archive {
   /* background: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55); 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
   /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%); */
   /* background: linear-gradient(44deg,#abdcff,#0396ff); */
-  background: linear-gradient(44deg,#abdcff 0,#0396ff 93%);
+  /* background: linear-gradient(45deg,#abdcff 0,#0396ff 93%); */
+  /* rgb(174, 174, 238) 谷雨 0.6透明度，0%位置*/ 
+  /* rgb(174, 208, 238) */
+  background: linear-gradient(  
+    to right,     
+    rgba(174,208,238,0.1) 0%,
+    rgba(174,208,238,0.1) 100%); 
+  /* background: linear-gradient(  
+    to right,   
+    rgb(174, 208, 238,0.95) 0%,   
+    rgba(174,208,238,0.9) 10%,   
+    rgba(174,208,238,0.8) 20%, 
+    rgba(174,208,238,0.6) 30%,   
+    rgba(174,208,238,0.1) 40%,  
+    rgba(174,208,238,0) 45%,   
+    rgba(174,208,238,0) 55%,  
+    rgba(174,208,238,0.1) 60%, 
+    rgba(174,208,238,0.6) 70%,  
+    rgba(174,208,238,0.8) 80%,  
+    rgba(174,208,238,0.9) 90%,   
+    rgba(174,208,238,0.95) 100%);   */
   opacity: 0.95; /*导航栏 默认透明度*/
   backdrop-filter: var(--backdrop-filter);
 }
 [data-theme="dark"] #page-header.nav-fixed #nav {
-  background: rgba(0, 0, 0, 0.95) !important;
+  background: rgba(0, 0, 0, 0.35) !important;
 }
 
 /* 一图流样式 */
@@ -1723,13 +1743,13 @@ a:hover {
   z-index: 1919810;
 }
 [data-theme="light"] #fps {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.52);
   backdrop-filter: var(--backdrop-filter);
   padding: 4px;
   border-radius: 4px;
 }
 [data-theme="dark"] #fps {
-  background-color: rgba(0, 0, 0, 0.72);
+  background-color: rgba(0, 0, 0, 0.52);
   backdrop-filter: var(--backdrop-filter);
   padding: 4px;
   border-radius: 4px;
@@ -1738,7 +1758,7 @@ a:hover {
 /* 侧边栏 */
 div#rightside {
   display: var(--rightside-display);
-  opacity: 0.98 !important;
+  opacity: 0.78 !important;
   transform: translateX(-58px);
 }
 

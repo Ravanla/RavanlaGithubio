@@ -129,27 +129,8 @@ node 版本过高导致，可以下个 nvm 来控制 node 版本，建议安装�
 
 ![Group Image Gallery](https://bu.dusays.com/2022/11/26/638228a86935a.webp)
 
-ACG
-
-那些二次元的故事
-
-[](https://tzy1997.com/gallery/ACG)
-
 ![Group Image Gallery](https://bu.dusays.com/2022/11/27/63831b681e9f8.jpg)
 
-岳阳
-
-2017年5月岳阳
-
-[](https://tzy1997.com/gallery/YY)
-
-![Group Image Gallery](https://i.loli.net/2019/12/25/hOqbQ3BIwa6KWpo.jpg)
-
-OH MY GIRL
-
-关于OH MY GIRL的图片
-
-[](https://tzy1997.com/Gallery/ohmygirl)
 
 基本的格式为：
 
@@ -171,10 +152,6 @@ OH MY GIRL
 
 ![相册页效果](https://bu.dusays.com/2022/06/01/6296cfb61c089.jpg)
 
-相册页效果
-
-![子页面效果-01](https://bu.dusays.com/2022/06/01/6296cff267f61.jpg)
-
 子页面效果-01
 
 ![子页面效果-02](https://bu.dusays.com/2022/06/01/6296cffa59837.jpg)
@@ -183,7 +160,9 @@ OH MY GIRL
 
 ## 域名已经解析到github, 但是输入xxx.github.io却报404
 
-这时候检查你的项目根目录有没有一个名为`CNAME`的文件。如果没有的话，打开博客`/source`目录，我的是`G:/hexo-blog/blog-demo/source`，新建`CNAME`文件，注意没有后缀。然后在里面写上你的域名(例如：tzy1997.com)，保存。最后运行`hexo g`、`hexo d`上传到`github`。这样到最后当你在地址栏输入`xxx.github.io`时，才会自动跳转到你的域名。
+这时候检查你的项目根目录有没有一个名为`CNAME`的文件。如果没有的话，打开博客`/source`目录，我的是`G:/hexo-blog/blog-demo/source`，新建`CNAME`文件，注意没有后缀。
+然后在里面写上你的域名(例如：tzy1997.com)，保存。最后运行`hexo g`、`hexo d`上传到`github`。
+这样到最后当你在地址栏输入`xxx.github.io`时，才会自动跳转到你的域名。
 
 ## ERROR TypeError: xxxx\\node\_modules\\hexo-theme-butterfly\\layout\\includes\\page\\flink.pug:13
 
