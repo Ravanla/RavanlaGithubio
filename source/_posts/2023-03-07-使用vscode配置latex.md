@@ -8,6 +8,7 @@ categories:
 mathjax: true
 abbrlink: ac8cc994
 date: 2023-02-07 11:37:23
+updated: 2023-02-14 22:00:00
 description:
 ---
 > Vscode 是一款杰出的代码编辑器，不论从代码高亮，自动补全上来讲，都是相当不错的，本文将要介绍在 Vscode 中配置 LaTeX

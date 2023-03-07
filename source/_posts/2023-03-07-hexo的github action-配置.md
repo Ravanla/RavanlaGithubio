@@ -7,7 +7,8 @@ categories:
   - null
 mathjax: true
 abbrlink: ac8cced9
-date: 2023-03-07 11:52:48
+date: 2023-03-04 11:52:48
+updated: 2023-03-07 22:00:00
 description:
 ---
 
@@ -423,6 +424,8 @@ git push origin master
 https://tuchuang.voooe.cn/images/2023/03/07/0b28a76a08cb845743cc6b738568f57.png)  
 点击Deploy查看部署情况  
 
+若是有红色交叉，说明部署失败，可以点开红酒交叉进行查看报错代码并复制代码在网上寻求解决办法
+![](https://tuchuang.voooe.cn/images/2023/03/07/677bc8624c653a5ff634b95e104bca2.png)
 
 若全部打钩，恭喜你，你现在可以享受自动部署的快感了。
 
