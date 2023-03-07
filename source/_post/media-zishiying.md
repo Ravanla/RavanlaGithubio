@@ -1,13 +1,9 @@
 ---
 title: 利用@media screen实现网页布局的自适应
-tags:
-  - CSS
-  - Stylus
-  - 前端
+date: 2021-04-24 22:45:06
+tags: [CSS,Stylus,前端]
 categories: coding学习
-abbrlink: ff876b6e
-date: 2021-04-24 22:45:00
-swiper_index: #置顶轮播图顺序，非负整数，数字越大越靠前
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/20210424125426.png
 ---
 ## <u>前言</u>
 

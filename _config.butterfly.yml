@@ -13,7 +13,7 @@ menu:
     影院: /life/movies/ ||icon-dianying1 || faa-tada
     游戏: /life/games/ || icon-youxishoubing || faa-tada
   # 八宝箱 || icon-xiangzi || faa-tada || hide:
-  #   画廊: /box/gallery/ ||icon-tubiaozhizuomoban || faa-tada
+  #   # 相册: /box/gallery/ ||icon-tubiaozhizuomoban || faa-tada
   #   动画: /box/animation/ || icon-nvwumao || faa-tada
   #   网址导航: /box/nav/ || icon-zhifengche || faa-tada
   友链 || icon-shejiaoxinxi || faa-tada || hide:
@@ -25,7 +25,7 @@ menu:
     文章统计: /site/echarts/ || icon-shujutongji1 || faa-tada
     旧时光: /site/time/ || icon-xianxingshalou || faa-tada
   个人 || icon-maoliang || faa-tada || hide:
-    唠叨: /personal/bb/ || icon-qunliaotian || faa-tada
+    # 唠叨: /personal/bb/ || icon-qunliaotian || faa-tada
     相册: /box/gallery/ ||icon-tubiaozhizuomoban || faa-tada
     wowSA: /personal/love/ || icon-love-sign || faa-tada
     关于: /personal/about/ || icon-paperplane || faa-tada

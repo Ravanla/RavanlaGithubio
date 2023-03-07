@@ -1,9 +1,8 @@
 ---
 title: 截图神器——Snipaste
+date: 2021-04-25 11:29:53
 categories: 实用工具
-abbrlink: cb7a7728
-date: 2021-04-25 11:29:20
-swiper_index: #置顶轮播图顺序，非负整数，数字越大越靠前
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/20210425113453.png
 ---
 
 ![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/20210425113453.png)

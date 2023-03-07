@@ -5,7 +5,7 @@ tags:
 categories: 实用工具
 abbrlink: 1130bd74
 date: 2022-03-29 19:24:00
-swiper_index: 90 #置顶轮播图顺序，非负整数，数字越大越靠前
+swiper_index: 80 #置顶轮播图顺序，非负整数，数字越大越靠前
 ---
 
 # 四史自动刷课脚本说明

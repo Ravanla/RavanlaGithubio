@@ -1,12 +1,8 @@
 ---
 title: JetBrains申请学生认证
-categories: 实用工具
-abbrlink: 4e254ff4
 date: 2022-02-22 16:56:20
-abstract: 后端配置教程
-description: 
-mathjax: true
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+categories: 实用工具
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202203011658000.jpeg
 ---
 
 ## **申请JetBrains学生认证有什么作用？**

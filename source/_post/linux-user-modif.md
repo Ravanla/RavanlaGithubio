@@ -1,11 +1,9 @@
 ---
 title: Linux下修改用户名（同时修改用户组名和家目录）
-tags:
-  - Linux
-categories: 操作系统
-abbrlink: b7d1545b
 date: 2022-10-11 21:25:00
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+tags: [Linux]
+categories: 操作系统
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202210112126378.png
 ---
 
 新装了一个Ubuntu，装好之后给了个默认的用户名，这时候需要重命名用户名，故出此教程。

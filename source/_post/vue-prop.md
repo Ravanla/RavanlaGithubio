@@ -1,12 +1,9 @@
 ---
 title: Vue组件传参
-tags:
-  - vue
-  - 前端
+date: 2021-04-26 16:28:59
+tags: [vue,前端]
 categories: coding学习
-abbrlink: 3078c52
-date: 2021-04-26 16:28:34
-swiper_index: #置顶轮播图顺序，非负整数，数字越大越靠前
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/vue002.jpeg
 ---
 
 ### 基础

@@ -1,0 +1,904 @@
+---
+title: Spring入门
+date: 2023-02-10 16:00:00
+tags: [后端, Spring]
+categories: coding学习
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302101749291.png
+---
+
+# Spring快速入门
+
+## 开发步骤
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202301131557005.png)
+
+1. 导入Spring开发的基本包坐标（Maven）
+2. 编写Dao接口和实现类
+3. 创建Spring核心配置文件
+4. 在Spring配置文件中配置UserDaoImpl
+5. 使用Spring的API获得Bean实例
+
+## applicationXml配置文件
+
+### Bean标签的属性
+
+**scope**：指对象的作用范围
+
+ ![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202301131634005.png)
+
+注：
+
+1. singleton：加载配置文件时创建bean对象
+
+   ![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302101800828.png)
+
+2. prototype：`getBean`时创建bean对象
+
+   ![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302101800559.png)
+
+
+
+**init-method**：指定类中的初始化方法名称
+
+**destroy-method**：指定类中销毁方法名称
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302091639251.png)
+
+### Bean实例化三种方式
+
+- 无参构造方法实例化（常用）
+- 工厂静态方法实例化
+- 工厂实例方法实例化
+
+### Bean的依赖注入
+
+**依赖注入**：它是Spring框架核心IOC的具体实现。
+
+> 在编写程序时，通过控制反转，把对象的创建交给了 Spring，但是代码中不可能出现没有依赖的情况。
+>
+> IOC解耕只是降低他们的依赖关系，但不会消除。例如：业务层仍会调用持久层的方法。
+>
+> 那这种业务层和持久层的依赖关系，在使用 Spring 之后，就让Spring 来维护了。
+>
+> 简单的说，就是坐等框架把持久层对象传入业务层，而不用我们自己去获取。
+
+注入方式：
+
+- 构造方法
+- set方法 
+
+#### set方法注入
+
+在配置文件里使用如下代码将`userDao`注入到`userService`中
+
+```xml
+<bean id="userDao" class="com.xx.UserDaoImp1"></bean>
+
+<bean id="userService" class="com.xx.UserServiceImp1">
+  <!--这里的ref代表上面的id-->
+	<property name="userDao" ref="userDao"></property> 
+</bean>
+```
+
+在`UserServiceImp1`文件中使用`set()`方法引入`userDao`
+
+```java
+private UserDao userDao;
+// 上面的name对应这里的setXX的XX
+public void setUserDao(UserDao userDao) {
+  this.userDao = userDao;
+}
+```
+
+{% note info %}
+
+更简便的编写方式：**P命名空间注入**，主要体现在配置文件中
+
+{% endnote %}
+
+首先，需要引入P命名空间：
+
+`xmlns:p="http://www.springframework.org/schema/p"`
+
+其次，修改注入方式：
+
+`<bean id="userService" class="com.xx.UserServiceImp1" p:userDao-ref="userDao"/>`
+
+#### 构造方法注入
+
+在`UserServiceImp1`文件中使用`有参构造`方法引入`userDao`
+
+```java
+private UserDao userDao;
+// 下面的name对应这里的参数userDao
+public UserServiceImp1(UserDao userDao) {
+  this.userDao = userDao;
+}
+```
+
+在配置文件里使用如下代码将`userDao`注入到`userService`中
+
+```xml
+<bean id="userDao" class="com.xx.UserDaoImp1"></bean>
+
+<bean id="userService" class="com.xx.UserServiceImp1">
+  <!--这里的ref代表上面的id-->
+  <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+ </bean>
+```
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302091655140.png)
+
+### 加载配置properties
+
+- 开启context命名空间
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302081719391.png)
+
+- 使用context命名空间，加载指定properties文件
+
+```xml
+<!--必须加classpath:，从当前工程中读-->
+<context: property-placeholder location="classpath:jdbc.properties"/>
+```
+
+- 使用${}读取加载的属性值
+
+```xml
+<property name="username" value="${jdbc.username}"/>
+```
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302081753009.png)
+
+## 容器
+
+### 创建容器
+
+- 类路径加载配置文件
+
+```java
+ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+```
+
+- 加载多个xml配置文件
+
+```java
+ApplicationContext ctx = new ClassPathXmlApplicationContext("bean1.xml","bean2.xml");
+```
+
+### 获取Bean
+
+- 方式一：使用bean名称获取
+
+ ```java
+ BookDao bookDao = (BookDao)ctx.getBean("bookDao");
+ ```
+
+- 方式二：使用bean名称获取并指定类型
+
+```java
+BookDao bookDao = ctx.getBean("bookDao",BookDao.class);
+```
+
+- 方式三：使用bean类型获取
+
+```java
+BookDao bookDao = ctx.getBean(BookDao.class);
+```
+
+### 容器接口
+
+- BeanFactory是Ioc容器的顶层接口（已弃用），初始化BeanFactory对象时，<u>加载的bean延迟加载</u> 
+
+- ApplicationContext接口是Spring容器的核心接口，<u>初始化时bean立即加载</u> 
+- ApplicationContext接口提供基础的bean操作相关方法，通过其他接口扩展其功能 
+- ApplicationContext接口常用初始化类
+  - ClassPathXmlApplicationContext（按类路径加载，常用）
+  - FileSystemXmlApplicationContext（按绝对路径加载）
+
+# 纯注解开发
+
+使用Spring的IoC容器，实际上就是通过类似XML这样的配置文件，把我们自己的Bean的依赖关系描述出来，然后让容器来创建并装配Bean。一旦容器初始化完毕，我们就直接从容器中获取Bean使用它们。
+
+使用XML配置的优点是所有的Bean都能一目了然地列出来，并通过配置注入能直观地看到每个Bean的依赖。它的缺点是写起来非常繁琐，每增加一个组件，就必须把新的Bean配置到XML中。
+
+有没有其他更简单的配置方式呢？
+
+有！我们可以使用`Annotation`配置，可以完全不需要XML，让Spring自动扫描Bean并组装它们。
+
+## 注解开发定义Bean
+
+1. 使用@Component定义bean
+
+   ```java
+   @Component("bookDao")
+   public class BookDaoImpl implements BookDao {}
+   
+   @Component
+   public class BookServiceImpl implements BookService {}
+   ```
+
+2. 核心配置文件中通过组件扫描加载bean
+
+   ```xml
+   <context:component-scan base-package="com.itheima"/>
+   ```
+
+### @Component衍生注解
+
+- @Controller：用于表现层bean定义 
+
+- @Service：用于业务层bean定义
+
+- @Repository：用于数据层（dao层）bean定义
+
+## 注解开发替换xml
+
+- Spring3.0 开启了纯注解开发模式，使用Java类替代配置文件
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302101651279.png)
+
+- `@Configuration`注解用于设定当前类为配置类
+- `@ComponentScan`注解用于设定扫描路径，此注解只能添加一次，多个数据请用数组格式
+
+```java
+@ComponentScan({"com.itheima.service","com.itheima.dao"})
+```
+
+- 读取Spring核心配置文件初始化容器对象切换为**读取Java配置类初始化容器对象**
+
+```java
+//加载配置文件初始化容器
+ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+//加载配置类初始化容器(纯注解开发)
+ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+```
+
+## Bean作用范围
+
+- 使用`@Scope`定义bean作用范围
+
+```java
+@Repository // 用于数据层（dao层）bean定义
+@Scope("singleton") // 单例：singleton；多例：prototype
+public class BookDaoImpl implements BookDao{
+}
+```
+
+- 使用`@PostConstruct`、`@PreDestroy`定义bean生命周期
+
+```java
+@Repository
+@Scope("singleton")
+public class BookDaoImpl implements BookDao{
+	public BookDaoImpl(){
+		System.out.println("book dao constructor ...");
+	}
+
+	@PostConstruct
+	public void init(){
+		System.out.println("book init ...");
+	}
+
+	@PreDestroy
+	public void destroy(){
+		System.out.println("book destory ...");
+	}
+}
+```
+
+## 依赖注入
+
+### `@Autowired`（引用按类型）
+
+```java
+@Service
+public class BookServiceImpl implements BookService {
+
+  @Autowired
+  private BookDao bookDao;
+
+  // setter可以省略
+  // public void setBookDao(BookDao bookDao){ this.bookDao bookDao;}
+
+  public void save(){
+    System.out.println("book service save ...");
+    bookDao.save();
+  }
+}
+```
+
+{% note warning %}
+
+自动装配基于反射设计创建对象并**暴力反射**对应属性为私有属性初始化数据，因此无需提供`setter`方法
+
+自动装配建议使用无参构造方法创建对象（默认），如果不提供对应构造方法，请提供唯一的构造方法
+
+{% endnote %}
+
+### `@Qualifier`（引用按名称）
+
+```java
+@Service
+public class BookServiceImpl implements BookService {
+  @Autowired
+	@Qualifier("bookDao")
+  private BookDao bookDao;
+}
+```
+
+{% note warning %}
+
+比较少用此形式
+
+`@Qualifier`注解无法单独使用，必须配合`@Autowired`注解使用
+
+{% endnote %}
+
+### `@Value`（简单类型）
+
+```java
+@Repository("bookDao")
+public class BookDaoImpl implements BookDao {
+  @Value("jume18cm") 
+  private String name;
+
+  public void save(){
+  	System.out.println("book dao save..."+name);
+  }
+}
+```
+
+## 加载配置properties
+
+- 使用`@PropertySource`注解加载properties文件
+
+```java
+@Configuration
+@ComponentScan("com.itheima")
+@PropertySource("classpath:jdbc.properties") // 在resources文件夹下创建该文件
+public class SpringConfig{
+}
+```
+
+{% note warning %}
+
+路径仅支持单一文件配置，多文件请使用数组格式配置，不允许使用通配符*
+
+{% endnote %}
+
+- 读取properties文件
+
+```java
+@Repository("bookDao")
+public class BookDaoImpl implements BookDao {
+  @Value("${name}")  // 注意是写在双引号里面
+  private String name;
+
+  public void save(){
+  	System.out.println("book dao save..."+name);
+  }
+}
+```
+
+## 第三方bean管理
+
+在项目中除了自己创建的Bean，还会用到第三方的Bean（例如`JDBC`），那么会出现两个问题：
+
+- 如何去管理第三方bean？（~~修改第三方bean包~~）
+
+- 假如第三方bean又需要导入其他依赖，我们该如何处理？
+
+接下来就学习解决以上两个问题（*对应代码spring_14*）
+
+### 管理第三方bean
+
+#### 使用`@Bean`配置第三方bean
+
+```java
+@Configuration
+public class SpringConfig {
+  @Bean // 这里写了代表是第三方bean
+  public DataSource dataSource(){
+    DruidDataSource ds = new DruidDataSource();
+    ds.setDriverclassName("com.mysq1.jdbc.Driver");
+    ds.setUr1("jdbc:mysq1://localhost:3306/spring_db");
+    ds.setUsername("root");
+    ds.setPassword("root");
+    return ds;
+  }
+}
+```
+
+{% note warning %}
+
+不建议将`Bean`写在配置类里面，最好单独出来
+
+{% endnote %}
+
+#### 使用独立的配置类管理第三方bean
+
+1. 先创建一个第三方的配置类
+
+   ```java
+   public class JdbcConfig {
+   	@Bean
+     public DataSource dataSource(){
+       DruidDataSource ds new DruidDataSource();
+       //相关配置
+       return ds;
+     }
+   }
+   ```
+
+2. 使用`@Import`注解手动加入配置类到核心配置，此注解只能添加一次，多个数据请用数组格式
+
+   ```java
+   @Configuration
+   @Import(JdbcConfig.class)
+   public class SpringConfig {
+   }
+   ```
+
+### 第三方bean依赖注入
+
+#### 简单类型依赖注入
+
+```java
+public class JdbcConfig {
+  @Value("com.mysq1.jdbc.Driver") 
+  private String driver;
+  @Value("jdbc:mysq1://localhost:3306/spring_db") 
+  private String url;
+  @Value("root")
+  private String userName;
+  @Value("root")
+  private String password;
+
+  @Bean
+  public DataSource dataSource(){
+    DruidDataSource ds new DruidDataSource();
+    ds.setDriverclassName(driver);
+    ds.setUrl(ur1);
+    ds.setUsername(userName);
+    ds.setPassword(userName);
+    return ds;
+  }
+}
+```
+
+{% note info %}
+
+可以结合加载配置文件~
+
+{% endnote %}
+
+#### 引用类型依赖注入
+
+引用类型注入只需要为bean定义方法设置形参即可，容器会根据类型自动装配对象
+
+```java
+@Bean
+public DataSource dataSource(BookService bookService){ 
+  System.out.println(bookService);
+  DruidDataSource ds new DruidDataSource();
+  //属性设置
+  return ds;
+}
+```
+
+# AOP
+
+## AOP核心概念
+
+- AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构 
+
+- 作用：在**不惊动原始设计**的基础上为其进行功能增强 
+- Spring理念：无入侵式/无侵入式
+- SpringAOP本质：**代理模式**
+- 如果有大量的相同的功能需要开发，使用AOP是最好的，能简化代码的共性功能的开发
+
+![image-20230216173351236](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302161733293.png)
+
+- 连接点(JoinPoint)：程序执行过程中的任意位置，粒度为执行方法、抛出异常、设置变量等 
+  - 在SpringAOP中，理解为方法的执行
+
+- 切入点(Pointcut)：匹配连接点的式子
+  - 在SpringAOP中，一个切入点可以只描述一个具体方法，也可以匹配多个方法
+
+  {% note info no-icon %}
+
+  一个具体方法：com.itheima.dao包下的BookDao接口中的无形参无返回值的save方法
+
+  匹配多个方法：所有的save方法，所有的get开头的方法，所有以Dao结尾的接口中的任意方法，所有带有一个参数的方法
+
+  {% endnote %}
+
+- 通知(Advice)：在切入点处执行的操作，也就是共性功能
+  - 在SpringAOP中，功能最终以方法的形式呈现
+
+- 通知类：定义通知的类
+
+- 切面(Aspect)：描述通知与切入点的对应关系
+
+## 简单案例
+
+1. 导入`pom.xml`坐标，加载对应的包
+
+   ![image-20230216182117170](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302161821215.png)
+
+2. 写完对应的Sping框架类
+
+3. 配置`SpringConfig`：告诉它**启用注解方式**的AOP
+
+   ![image-20230216182638837](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302161826880.png)
+
+4. 定义**通知方法**，写一个类写一个方法，无返回值无参数
+
+   ![image-20230217104121315](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302171041389.png)
+
+5. 定义**切入点**：切入点定义依托一个不具有实际意义的方法进行，即**无参数**，**无返回值**，**方法体无实际逻辑**
+
+   ![image-20230217110411324](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302171104392.png)
+
+   说明：
+
+   - `execution`：执行
+   - `void ...testFun(int)`：方法确切位置的描述 --> **返回值void、在某某包下、参数int**
+
+6. 绑定切入点与通知关系，并指定通知添加到原始连接点的具体执行位置
+
+   ![image-20230217105422489](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302171054527.png)
+
+7. 定义**通知类**：该类受Spring容器管理，并定义当前类为切面类
+
+   ![image-20230217110512492](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302171105525.png)
+
+{% note warning no-icon %}
+
+踩坑记录：在**第5步**（定义切入点）的地方，描述方法一定要具体，有参数就一定要加参数，不然无法精确定位
+
+{% endnote %}
+
+## AOP工作流程
+
+**SpringAOP本质：代理模式**
+
+1. Spring容器启动
+
+2. 读取(绑定)所有切面配置中的切入点
+
+3. 初始化bean，判定bean对应的类中的方法是否匹配到任意切入点
+
+   - 匹配失败，创建对象
+
+   - 匹配成功，创建原始对象（目标对象）的代理对象
+
+   {% note info no-icon %}
+
+   目标对象（Target)：原始功能去掉共性功能对应的类产生的对象，这种对象是无法直接完成最终工作的
+
+   代理对象（Proxy)：目标对象无法直接完成工作，需要对其进行功能回填，通过原始对象的代理对象实现
+
+   {% endnote %}
+
+4. 获取bean执行方法
+
+   - 获取bean，调用方法并执行，完成操作
+
+   - 获取的bean是代理对象时，根据代理对象的运行模式运行原始方法与增强的内容，完成操作
+
+## AOP切入点表达式
+
+### 切入点与切入点表达式
+
+切入点：要进行增强的方法
+
+```java
+// 接口
+package com.itheima.dao
+public interface BookDao {
+	public void update();
+}
+
+// 实现类
+public class BookDaoImpl implements BookDao {
+    public void update(){System.out.printin("book dao update ...");}
+}
+```
+
+切入点表达式：要进行增强的方法的描述方式
+
+- 描述方式一：执行`com.itheima.dao`包下的<u>BookDao接口</u>中的<u>无参数update方法</u>
+
+  **execution(void com.itheima.dao.BookDao.update())**
+
+- 描述方式二：执行`com.itheima.dao.impl`包下的<u>BookDaoImpl类</u>中的<u>无参数update方法</u>
+
+  **execution(void com.itheima.dao.impl.BookDaoImpl.update())**
+
+### 表达式描述格式
+
+#### 标准格式
+
+切入点表达式标准格式：动作关键字（访问修饰符返回值包名。类/接口名。方法名（参数）异常名)
+
+```java
+execution(public User com.itheima.service.UserService.findById(int))
+```
+
+- 动作关键字：描述切入点的行为动作，例如execution表示执行到指定切入点
+- 访问修饰符：public，privates等，可以省略
+
+- 返回值
+
+- 包名
+
+- 类/接口名
+
+- 方法名
+
+- 参数
+
+- 异常名：方法定义中抛出指定异常，可以省略
+
+#### 通配符格式
+
+可以使用通配符描述切入点，使用更广泛
+
+- *：单个独立的任意符号，可以独立出现，也可以作为前缀或者后缀的匹配符出现
+
+  ```
+  execution (public * com.itheima.*.UserService.find*(*))
+  ```
+
+  匹配`itheima`包下任意包中的`UserService`类或接口中的以`find`开头且带有一个参数的方法
+
+- .：多个连续的任意符号，可以独立出现 ，常用于简化包名与参数的书写
+
+  ```
+  execution (public User com..UserService.findById (..))
+  ```
+
+  匹配`com`包下的任意包中的`UserService`类或接口中所有名称为findByld的方法，参数不限制
+
+- +：专用于匹配子类类型
+
+  ```
+  execution(* *..*Service+.*(..))
+  ```
+
+  匹配任意业务层的方法
+
+### 书写注意
+
+- 所有代码按照标准规范开发，否则以下技巧全部失效
+- 描述切入点**通常描述接口**，而不描述实现类
+- 访问控制修饰符针对接口开发均采用pubⅰc描述（**可省略访问控制修饰符描述**）
+- 返回值类型：对于增删改类使用精准类型加速匹配，对于查询类使用通配快速描述
+- **包名**书写**尽量不使用 .. 匹配**，效率过低，常用做单个包描述匹配，或精准匹配
+- **接口名/类名**书写名称与模块相关的**采用 \* 匹配**，例如`UserService`书写成`*Service`，绑定业务层接口名
+- **方法名**书写以**动词**进行**精准匹配**，名词采用 * 匹配，例如`getByld`书写成`getBy*`，selectAll书写成selectAll
+- 参数规则较为复杂，根据业务方法灵活调整
+- 通常**不使用异常**作为**匹配**规则
+
+## AOP通知类型
+
+AOP通知描述了抽取的共性功能，根据共性功能抽取的位置不同，最终运行代码时要将其加入到合理的位置
+
+AOP通知共分为5种类型
+
+- 前置通知：`@Before`
+- 后置通知：`@After`
+- 环绕通知**（重点）**：`@Around`
+- 返回后通知（了解）：`@AfterReturing` 只有当方法没有抛异常才会执行
+- 抛出异常后通知（了解）：`@AfterThowing` 没事不运行 有事才运行
+
+### 常用：环绕通知
+
+```java
+@Pointcut("execution(* com.*..*Service.find*(..))")
+private void pt(){}
+
+@Around("pt()")
+public Object around(ProceedingJoinPoint pjp) throws Throwable {
+    System.out.println("around before：" + System.currentTimeMillis());
+    // 表示对原始操作的调用
+    Object obj = pjp.proceed();
+    System.out.println("around after：" + System.currentTimeMillis());
+    return obj;
+}
+```
+
+**@Around 环绕通知注意事项**
+
+1. 环绕通知必须依赖形参`ProceedingJoinPoint`才能实现对原始方法的调用，进而实现原始方法调用前后同时添加通知
+2. 通知中如果未使用`ProceedingJoinPoint`对原始方法进行调用将跳过原始方法的执行
+   - 可以做权限校验！
+3. 对原始方法的调用可以不接收返回值，通知方法设置成`void`即可，如果接收返回值，必须设定为`Object`类型
+4. 原始方法的返回值如果是`void`类型，通知方法的返回值类型可以设置成`void`，也可以设置成`Object` 
+5. 由于无法预知原始方法运行后是否会抛出异常，因此环绕通知方法必须抛出`Throwable`对象
+
+**环绕通知获取执行对象信息**
+
+```java
+@Around("pt()")
+public void around(ProceedingJoinPoint pjp) throws Throwable {
+    // 获取执行签名信息
+    Signature signature = pjp.getSignature();
+    // 通过签名获取执行类型(类/接口名)
+    String typeName = signature.getDeclaringTypeName();
+    // 通过签名获取执行操作名称(方法名)
+    String methodName = signature.getName();
+    long start = System.currentTimeMillis();
+    // 表示对原始操作的调用
+    for (int i=0;i<100;i++) {
+        pjp.proceed();
+    }
+    long end = System.currentTimeMillis();
+    System.out.println("百万次执行："+ typeName + "." + methodName + " ==> " + (end - start) + "ms");
+}
+```
+
+## AOP通知获取数据
+
+ 我们从AOP获取的数据主要分为这三点：
+
+1. 获取执行对象的**参数**：`getArgs()` （重点）
+
+   ```java
+   @Around("pt()")
+   public Object around2(ProceedingJoinPoint pjp) throws Throwable {
+       // 获取到所有参数的值
+       Object[] args = pjp.getArgs();
+       System.out.println(Arrays.toString(args));
+       // 使坏坏，改参数：对应工程中数值校验
+       args[0] = 5;
+       // 表示对原始操作的调用
+       return pjp.proceed(args);
+   }
+   ```
+
+   {% note warning no-icon %}
+
+   获取参数`@Around `用 `ProceedingJoinPoint` ，其他的都用`JoinPoint`
+
+   {% endnote %}
+
+2. 获取执行对象的**结果**：`@AfterReturn`
+
+   ```java
+   @AfterReturning(value = "pt()", returning = "ret")
+   public void afterReturning(JoinPoint jp, Object ret) {
+       System.out.println("afterReturning..." + ret);
+   }
+   ```
+
+   {% note warning no-icon %}
+
+   必须写`returning = "ret"`告诉AOP接受的返回值是接到哪里去
+
+   `JoinPoint jp, Object ret` 这两个参数顺序不能颠倒
+
+   {% endnote %}
+
+3. 获取执行对象的**异常**（了解）
+
+# 事务
+
+## 概念
+
+事务的作用：在数据层保障一系列的数据库操作同成功同失败
+
+Spring事务作用：在数据层或**业务层**保障一系列的数据库操作同成功同失败
+
+内部实现：
+
+```java
+public interface PlatformTransactionManager {
+	void commit(TransactionStatus status) throws TransactionException;
+	void rollback(TransactionStatus status) throws TransactionException;
+}
+```
+
+当同一方法多次操作数据库时，中间出现问题，已操作数据库的将会回滚
+
+## 案例：银行转账
+
+### 需求分析
+
+![image-20230219102113045](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302191021128.png)
+
+### **步骤**
+
+1. 在业务层接口上添加Spring事务管理
+
+   ```java
+   public interface AccountService {
+   	@Transactional
+   	public void transfer(String out,String in Double money);
+   }
+   ```
+
+   {% note warning no-icon %}
+
+   Spring注解式事务通常添加在**业务层接口**中而不会添加到业务层实现类中，降低耦合
+
+   注解式事务可以添加到**业务方法上**表示当前方法开启事务，也可以**添加到接口上**表示当前接口所有方法开启事务
+
+   {% endnote %}
+
+2. 设置事务管理器
+
+   在`Jdbc`里设置如下一个方法，表示事务管理器
+
+   ```java
+   @Bean
+   public PlatformTransactionManager transactionManager(DataSource dataSource){
+   	DataSourceTransactionManager ptm = new DataSourceTransactionManager();
+     // 通过Spring自动装配
+   	ptm.setDataSource(dataSource);
+   	return ptm;
+   }
+   ```
+
+   {% note warning no-icon %}
+
+   事务管理器要根据**实现技术**进行选择，MyBatis框架使用的是JDBC事务
+
+   以后假如不是用`Jdbc`实现的话，需要将`DataSourceTransactionManager`替换
+
+   {% endnote %}
+
+3. 开启注解式事务驱动
+
+   在Spring配置文件写入`@EnableTransactionManagement`注解
+
+   ```java
+   @Configuration
+   @ComponentScan("com.cdr")
+   @PropertySource("classpath:jdbc.properties")
+   @Import({MyBatisConfig.class, JdbcConfig.class})
+   @EnableAspectJAutoProxy
+   @EnableTransactionManagement
+   public class SpringConfig {}
+   ```
+
+## 事务角色
+
+- 事务管理员：发起事务方，在Spring中通常指代业务层开启事务的方法 `TransactionManagement`
+- 事务协调员：加入事务方，在Spring中通常指代数据层方法，也可以是业务层方法 `Service`
+
+## 事务相关配置
+
+![image-20230219105801652](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302191058711.png)
+
+重点：`rollbackFor` 有些异常他是不会回滚的，需要手动加上 
+
+### 事务传播行为
+
+![image-20230219112209486](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302191122567.png)
+
+```java
+public interface LogService {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    void insert(Log log);
+}
+```
+
+### 非事务方法执行
+
+假设几条SQL组成一次事务，事务要么所有操作全成功commit，要么其中一个失败然后所有操作 rollback。
+
+非事务运行显然就是指不以事务方式执行，举个栗子：
+
+``` java
+// 非事务方法执行
+public void tx() {
+  sql1();
+  sql2();
+  sql3();
+}
+```
+
+如果sq3()执行失败了，并不会让前两个操作回滚。

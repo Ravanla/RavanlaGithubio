@@ -1,12 +1,9 @@
 ---
 title: Python操作Excel表实例
-tags:
-  - Python
-  - Excel
-categories: coding学习
-abbrlink: 6393683d
 date: 2022-09-18 13:22:00
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+tags: [Python, Excel]
+categories: coding学习
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202209181323336.png
 ---
 最近学校整理学籍信息，其中有个需求是将一个总表拆分成若干个表格，首先将总表的每个学生的姓名、学号、联系电话信息提取出来，再根据学生的班级信息进行归类，生成若干个班级表。
 

@@ -1,14 +1,9 @@
 ---
 title: 踩坑记录（二）
-tags:
-  - JavaScript
-categories:
-  - 踩坑记录
-mathjax: true
-abbrlink: e8dc8d0
-swiper_index: 
 date: 2021-04-30 18:42:18
-description:
+tags: [JavaScript]
+categories: 踩坑记录
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/20210430190324.png
 ---
 
 ### 起因

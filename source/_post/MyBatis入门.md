@@ -1,0 +1,527 @@
+---
+title: MyBatis入门
+date: 2023-02-11 12:00:00
+tags: [后端, MyBatis]
+categories: coding学习
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302131822684.png
+---
+
+# 介绍
+
+## 什么是MyBatis
+
+- MyBatis是一款优秀的**持久层（Dao）**框架，用于简化JDBC开发
+
+- MyBatis本是Apache的一个开源项目iBatis，2010年这个项目由apache software foundation迁移到了google code，并且改名为MyBatis。2013年11月迁移到Github 
+- 官网：https://mybatis.org/mybatis-3/zh/index.html
+
+## MyBatis 优点
+
+![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302102246392.png)
+
+# 如何写
+
+## Mapper代理开发
+
+1. 定义与SQL映射文件同名的Mapper接口，并且将Mapper接口和SQL映射文件放置在同一目录下
+
+   ![image-20230212171836753](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121718772.png)
+
+   <!--在res目录下创建包的结构需要用斜杠/-->
+
+2. 设置SQL映射文件的namespace属性为Mapper接口全限定名
+
+   ![image-20230212172002091](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121720105.png)
+
+3. 在Mapper接口中定义方法，方法名就是SQL映射文件中sql语句的id，并保持参数类型和返回值类型一致
+
+   ![image-20230212172426237](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121724293.png)
+
+4. 编码
+
+   1. 通过SqlSession的getMapper方法获取Mapper接口的代理对象
+   2. 调用对应方法完成sq的执行
+
+   ![image-20230212172653274](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121726294.png)
+
+> 细节：如果Mapper接口名称和SQL映射文件名称相同，并在同一目录下，则可以使用包扫描的方式简化SQL映射文件的加载
+
+![image-20230212174720370](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121747394.png)
+
+# 配置讲解
+
+[MyBatis核心配置文件](https://mybatis.org/mybatis-3/zh/configuration.html)的顶层结构如下：
+
+![image-20230212180151396](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302121801416.png)
+
+> 编写配置文件时，需要遵守标签的顺序规则，按上面的来顺序不能乱
+
+## 类型别名(typeAliases)
+
+类型别名可为 Java 类型设置一个缩写名字。 它仅用于 XML 配置，意在降低冗余的全限定类名书写。例如：
+
+```xml
+<!--指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean-->
+<typeAliases>
+    <package name="com.cdr.pojo"/>
+</typeAliases>
+
+<!--指定一个名称，代替后面的type-->
+<typeAliases>
+  <typeAlias alias="Author" type="domain.blog.Author"/>
+  <typeAlias alias="Blog" type="domain.blog.Blog"/>
+  <typeAlias alias="Comment" type="domain.blog.Comment"/>
+  <typeAlias alias="Post" type="domain.blog.Post"/>
+  <typeAlias alias="Section" type="domain.blog.Section"/>
+  <typeAlias alias="Tag" type="domain.blog.Tag"/>
+</typeAliases>
+```
+
+# Mapper语法编写
+
+[XML 映射器](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html)官方详细文档。MyBatis 的真正强大在于它的语句映射，这是它的魔力所在。
+
+## 编写流程
+
+1. 编写接口方法：Mapper接口
+
+   - 参数：增删改查所需的参数
+
+   - 结果：有返回值：`List`、实体类，无返回值：`void`
+
+2. 编写SQL语句：XML映射文件
+3. 执行方法，测试
+
+## namespace
+
+语法空间：关联对应的mapper类
+
+![image-20230213110820436](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302131108497.png)
+
+## resultMap
+
+`resultMap` 元素是 MyBatis 中最重要最强大的元素。[官方文档](https://mybatis.org/mybatis-3/zh/sqlmap-xml.html#%E7%BB%93%E6%9E%9C%E6%98%A0%E5%B0%84)详解
+
+**数据库的字段名称** 和 **实体类的属性名称** 不一样，则不能自动封装数据
+
+* 起别名：用as 对不一样的列名，让别名和实体类的属性名一样
+    				缺点：每次查询都要定义一次别名
+    
+    ```sql
+    select
+    	id, brand_name as brandName, company_name as companyName, ordered, description, status
+    from tb_brand;
+    ```
+* 使用sql片段  缺点：每次查询不同的列名都要重写，不灵活
+
+    ```xml
+    <sql id="brand_column">
+        id, brand_name as brandName, company_name as companyName, ordered, description, status
+    </sql>
+    
+    <select id="selectAll" resultType="brand">
+        select
+            <include refid="brand_column"></include>
+        from tb_brand;
+    </select>
+    ```
+* resultMap：
+    1. 定义`<resultMap>`标签
+
+    2. 在`<select>`标签中，使用resultMap属性替换 resultType属性
+
+    ```xml
+    <!--resultMap
+        id：唯一标识
+        type：映射的类型，支持别名
+    -->
+    <resultMap id="brandResultMap" type="brand">
+        <!--id的写法：<id column="id" property="id"/>-->
+        <!--普通列的写法↓-->
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+    
+    <select id="selectAll" resultMap="brandResultMap">
+        select
+            *
+        from tb_brand;
+    </select>
+    ```
+
+## SQL语句块
+
+sql语句块包含了以下常见的语法：
+
+- `insert` – 映射插入语句。
+- `update` – 映射更新语句。
+- `delete` – 映射删除语句。
+- `select` – 映射查询语句。
+
+```xml
+<!--
+    id：对应mapper类里的方法名，用于调用执行对应的sql语句
+    type：映射的pojo类型，支持别名，返回对应片段会自动封装
+-->
+<select id="selectAll" resultType="brand">
+    select
+        id, brand_name as brandName, company_name as companyName, ordered, description, status
+    from tb_brand;
+</select>
+```
+
+语句块里sql语句常见的一些写法说明：
+
+```xml
+<!--
+    * 参数占位符：
+        1. #{}：会将其替换为 ？，为了防止sql注入
+        2. ${}：拼sql，会存在sql注入问题
+        3. 使用时机：
+            * 参数传递的时候：#{}
+            * 拼接表名或列名的时候：${} （不推荐）
+
+    * 参数类型：parameterType：可以省略
+    * 特殊字符处理：
+        1. 转义字符：小于号(<) => &lt;
+        2. CDATA区：IDEA写CD就能出来，该区域当作纯文本处理
+-->
+<select id="selectById" parameterType="int" resultMap="brandResultMap">
+    select *
+    from tb_brand where id <![CDATA[
+    <
+    ]]> #{id}
+</select>
+```
+
+## 多条件查询
+
+### 需求分析
+
+查询多个条件：
+
+- 当前状态：精确查询  `status = ?`
+- 企业名称：模糊查询  `company_name like ?`
+- 品牌名称：模糊查询 `brand_name like ?`
+- 同时成立 => 使用and连接
+
+![image-20230213114332141](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302131143205.png)
+
+### 三种查询方式
+
+分析完需求后，编写xml映射（以下三种查询方式都是统一的xml配置）
+
+```xml
+<select id="selectByCondition" resultMap="brandResultMap">
+    select *
+    from tb_brand
+    where status = #{status}
+        and company_name like #{companyName}
+        and brand_name like #{brandName}
+</select>
+```
+
+1. **散装参数查询**
+
+   `@Param("XXX")` 指定xml接受的名称
+
+   ```java
+   // Mapper接口定义
+   List<Brand> selectByCondition(@Param("status")int status, @Param("companyName")String companyName, @Param("brandName")String brandName);
+   
+   // 调用查询
+   List<Brand> brands = selectByCondition(status, companyName, brandName);
+   ```
+
+2. **实体类封装对象查询**
+
+   只需要保证SQL中的参数名和实体类属性名对应上，即可设置成功
+
+   ```java
+   // Mapper接口定义
+   List<Brand> selectByCondition(Brand brand);
+   
+   // 封装对象
+   Brand brand = new Brand();
+   brand.setStatus(status);
+   brand.setBrandName(brandName);
+   brand.setCompanyName(companyName);
+   // 调用查询
+   List<Brand> brands = brandMapper.selectByCondition(brand);
+   ```
+
+3. **Map集合查询**
+
+   只需要保证SQL中的参数名和Map集合的键的名称对应上，即可设置成功
+
+   ```java
+   // Mapper接口定义
+   List<Brand> selectByCondition(Map map);
+   
+   // 封装对象
+   Map<String, String> map = new HashMap<>();
+   map.put("status", String.valueOf(status));
+   map.put("companyName", companyName);
+   map.put("brandName", brandName);
+   // 调用查询
+   List<Brand> brands = brandMapper.selectByCondition(map);
+   ```
+
+### 动态查询
+
+当条件为可选的时候，SQL语句需要随着用户的输入或外部条件的变化而变化，MyBatis提供了**[动态查询](https://mybatis.org/mybatis-3/zh/dynamic-sql.html)**功能
+
+- if：条件判断
+- choose(when, otherwise)：多个条件中选择一个使用
+- trim(where ,set)：帮忙删掉额外的东西
+- foreach：循环遍历
+
+#### if
+
+当前端页面为多个参数组合时，且不确定参数具体有几个，可以选择if
+
+```xml
+<select id="selectByCondition" resultMap="brandResultMap">
+    select *
+    from tb_brand
+    <where>
+        <if test="status != null">
+           and status = #{status}
+        </if>
+        <if test="companyName != null and companyName != ''">
+            and company_name like #{companyName}
+        </if>
+        <if test="brandName != null and brandName != ''">
+            and brand_name like #{brandName}
+        </if>
+    </where>
+</select>
+```
+
+注意：
+
+1. if 判断公式的连接使用`and`或者`or`，而不是`&&`
+2. 用`<where>`标签代替手写的where，`<where>`会自动删除SQL语句里多余的`and`
+
+#### choose
+
+当前端页面只传来一个参数，且不确定是哪个参数，可以选择choose
+
+```xml
+<select id="selectByConditionSingle" resultMap="brandResultMap">
+    select *
+    from tb_brand
+    <where>
+        <choose><!--类似于switch-->
+            <when test="status != null"><!--类似于case-->
+                status = #{status}
+            </when>
+            <when test="companyName != null and companyName != ''">
+                company_name like #{companyName}
+            </when>
+            <when test="brandName != null and brandName != ''">
+                brand_name like #{brandName}
+            </when>
+            <otherwise><!--类似于default--><!--有where标签可以不写-->
+                1 = 1 
+            </otherwise>
+        </choose>
+    </where>
+</select>
+```
+
+注意：
+
+1. `<choose>`标签和`<where>`一起用嗷
+2. 有`<where>`标签情况，`<otherwise>`里假如为空且前面判断都不成立，则后面自动加上`where id < 1`（查不出数据）
+
+## 添加数据
+
+```xml
+<insert id="add" useGeneratedKeys="true" keyProperty="id">
+    insert into tb_brand (brand_name, company_name, ordered, description, status)
+    values (#{brandName},#{companyName},#{ordered},#{description},#{status});
+</insert>
+```
+
+注意：
+
+1. 事务提交：写完添加、修改、删除语句后需要`commit`才会更改到数据库
+
+   ![image-20230213163801324](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302131638355.png)
+
+   {% note info no-icon %}
+
+   假如不想每次都需要`commit`，可以在获取`sqlSession`的时候将openSession()的参数设为`true`
+
+   {% endnote %}
+
+2. 主键返回：在数据添加成功后，需要获取插入数据库数据的主键的值
+
+   ![image-20230213170241768](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302131702805.png)
+
+   - useGeneratedKeys：默认false，设置为ture后就会返回`keyProperty`所设置的键值
+   - keyProperty：要返回的主键，一般是id
+
+## 更新数据
+
+用`Update`更新数据库字段，主要注意点就是
+
+- 可以用`<set>`和`<if>`标签编写动态SQL
+- 记得commit
+
+```xml
+<update id="update">
+    update tb_brand
+    <set><!--使用set可以自动去除多余的逗号-->
+        <if test="status != null">
+            status = #{status},
+        </if>
+        <if test="brandName != null and brandName != ''">
+            brand_name = #{brandName},
+        </if>
+        <if test="companyName != null and companyName != ''">
+            company_name = #{companyName},
+        </if>
+        <if test="ordered != null">
+            ordered = #{ordered},
+        </if>
+        <if test="description != null and description != ''">
+            description = #{description},
+        </if>
+    </set>
+    <where>
+        id = ${id}
+    </where>
+</update>
+```
+
+```java
+@Test
+public void testUpdate() throws IOException {
+    int status = 0;
+    String companyName = " 波导手机";
+    String brandName = "波导";
+    String description = "波导手机,手机中的战斗机";
+    int ordered = 200;
+    int id = 4;
+
+    // 封装对象
+    Brand brand = new Brand();
+    brand.setId(id);
+    brand.setStatus(status);
+    brand.setBrandName(brandName);
+    //brand.setCompanyName(companyName);
+    //brand.setDescription(description);
+    //brand.setOrdered(ordered);
+
+    //1. 获取SqlSessionFactory
+    String resource = "mybatis-config.xml";
+    InputStream inputStream = Resources.getResourceAsStream(resource);
+    SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+    //2. 获取连接
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+
+    //3. 获取对应mapper
+    BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+    //4. 修改（以后就写这一步）
+  	// 获取修改后受影响的行数
+    int count = brandMapper.update(brand);
+  	//5. 记得要commit()
+    sqlSession.commit();
+  
+    System.out.println(count);
+
+    //6. 释放资源
+    sqlSession.close();
+}
+```
+
+## 批量删除
+
+### foreach
+
+`foreach`对集合进行遍历，其属性有：
+
+- collection：迭代的对象，默认为`array`，可以在maaper接口里使用@Param注解改变Map集合的默认key的名称
+- item：单次迭代获取到的值
+- index：单次迭代获取到的索引
+- separator：迭代之间的分隔符
+- open、close：指定开头与结尾的字符串
+- nullable：可否为空
+
+{% note info no-icon %}
+
+当使用可迭代对象或者数组时，index 是当前迭代的序号，item 的值是本次迭代获取到的元素。当使用 Map 对象（或者 Map.Entry 对象的集合）时，index 是键，item 是值。
+
+{% endnote %}
+
+### 示例代码
+
+编写一个Mapper接口，**注意这里的`@Param`注解**：可以改变`collection`的默认的名称
+
+```java
+/**
+ * 根据ids数组进行多个删除
+ * @param ids 多个id组成的数组
+ */
+void deleteByIds(@Param("ids") int[] ids);
+```
+
+编写XML映射文件
+
+```xml
+<!--
+    mybatis会将数组参数封装成为一个Map集合
+        * 默认key：array
+        * 使用@Param注解改变Map集合的默认key的名称
+-->
+<delete id="deleteByIds">
+    delete from tb_brand where
+    <foreach collection="ids" item="id" separator="," open="id in (" close=")">
+        #{id}
+    </foreach>
+</delete>
+```
+
+编写执行方法
+
+```java
+//1. 获取SqlSessionFactory...
+//2. 获取连接...
+//3. 获取对应mapper...
+//4. 执行批量删除
+int[] ids = {2,3,1};
+brandMapper.deleteByIds(ids);
+//5. 记得要commit()
+sqlSession.commit();
+//6. 释放资源...
+```
+
+# MyBatis参数传递
+
+MyBatis提供了ParamNameResolver类来进行参数封装
+
+![image-20230213210509506](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202302132105555.png)
+
+# MyBatis注解开发
+
+使用注解开发会比配置文件开发更加方便
+
+```java
+@Select("select * from tb_user where id = #{id}") 
+public User selectByld(int id);
+```
+
+- 查询：@Select 
+- 添加：@Insert 
+- 修改：@Update 
+- 删除：@Delete
+
+{% note info no-icon %}
+
+注解完成简单功能，配置文件完成复杂功能
+
+{% endnote %}

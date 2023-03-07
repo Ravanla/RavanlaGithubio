@@ -1,12 +1,9 @@
 ---
 title: Vue全局注册组件
-tags:
-  - vue
-  - 前端
+date: 2021-04-26 17:10:58
+tags: [vue,前端]
 categories: coding学习
-abbrlink: bc9d10b4
-date: 2021-04-26 17:10:02
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/vue001.jpeg
 ---
 
 今天在看main.js文件里面的代码，发现全局注册有两种方式，一种是用`Vue.component()`，另一种是用`Vue.use()`，于是上网搜了一下两者的区别。

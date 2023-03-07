@@ -28,7 +28,7 @@ abbrlink:
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-# url: https://ravanla.github.io/
+url: https://ravanla.github.io
 permalink: posts/:abbrlink.html
 permalink_defaults:
 pretty_urls:
@@ -253,8 +253,8 @@ gitcalendar:
   #   name: content
   #   index: 0
   # simplemode: true
-  user:  #git用户名
-  apiurl: ''
+  user:  Akilarlxh
+  apiurl: 'https://gitcalendar.akilar.top'
   minheight:
     pc: 320px #桌面端最小高度
     mibile: 0px #移动端最小高度

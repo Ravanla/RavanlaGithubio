@@ -1,12 +1,9 @@
 ---
 title: 简单学一下Vuex
-tags:
-  - vue
-  - 前端
+date: 2021-05-09 15:59:30
+tags: [vue,前端]
 categories: coding学习
-abbrlink: 12c8c8ec
-date: 2021-05-09 15:59:00
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/20210511185521.png
 ---
 
 众所周知在vue中，组件之间传递数据需要一步一步接着传递，这样写起来很麻烦，也会使代码晦涩难懂。因此，**vuex**诞生了！

@@ -1,0 +1,77 @@
+---
+title: Git创建远程仓库并将本地仓库关联上传
+date: 2022-03-06 10:51:28
+tags: [git]
+categories: coding学习
+cover: https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.zhimg.com%2Fv2-92670def922f6dcf443f6c861c36e326_1200x500.jpg&refer=http%3A%2F%2Fpic1.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1649127219&t=bb0b53677536bfac4acc6af27c8b440b
+---
+
+今天想将之前写好的代码推送到远程仓库，于是在gitee上新建一个仓库，推送的时候遇到不少问题，特此记录一下。
+
+## 流程
+
+1. 初始化本地git仓库，将写好的代码进行了add操作和commit操作：
+
+   ```git
+   $ git add .
+   $ git commit -m "first commit"
+   ```
+
+2. Gitee创建了git仓库并建立了一些基础文件：
+
+   ![](https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202203061016814.png)
+
+3. 本地仓库添加Gitee上的git仓库作为远程仓库，起名gitee：
+
+   ```git
+   # git remote add <仓库名(自定义)> <远程仓库地址>
+   $ git remote add gitee https://gitee.com/BaoziCDR/xiecheng_comment_analysis.git
+   ```
+
+4. 从远程仓库中获得数据，可以执行`git fetch`，但是报错了，原因是未指定仓库名：
+
+   ```
+   # git fetch <远程仓库名>
+   $ git fetch gitee
+   ```
+
+5. 如果不想每次都输入`<远程仓库名> <远程分支>`，可以关联默认的远程仓库及分支：
+
+   ```git
+   # git branch --set-upstream-to=<远程仓库名>/<远程分支> <本地分支>
+   $ git branch --set-upstream-to=gitee/master master
+   ```
+
+   > 若出现error: the requested upstream branch '<远程仓库名>/<远程分支>' does not exist
+   >
+   > 则需要先git fetch <远程仓库名>一次
+
+6. 接着，本地仓库在想做同步远程仓库到本地时报错了，错误如下：
+
+   ```git
+   $ git pull
+   ```
+
+   `fatal: refusing to merge unrelated histories` （拒绝合并不相关的历史）
+
+   **解决**
+
+   出现这个问题的最主要原因还是在于本地仓库和远程仓库实际上是独立的两个仓库。假如我之前是直接clone的方式在本地建立起远程Gitee仓库的克隆本地仓库就不会有这问题了。
+
+   查阅了一下资料，发现可以在pull命令后紧接着使用`--allow-unrelated-history`选项来解决问题（该选项可以合并两个独立启动仓库的历史）。
+
+   ```git
+   $ git pull --allow-unrelated-histories
+   ```
+
+7. 紧接着将本地仓库的提交推送到远程Gitee仓库上，使用的命令是：
+
+   ```git
+   $ git push
+   ```
+
+
+
+【END】
+
+快乐敲代码去了~

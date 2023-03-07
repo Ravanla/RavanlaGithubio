@@ -1,11 +1,9 @@
 ---
 title: 获取Linux集群免登陆权限
-tags:
-  - Linux
-categories: 操作系统
-abbrlink: a5a8aab0
 date: 2022-10-13 16:00:00
-swiper_index:  #置顶轮播图顺序，非负整数，数字越大越靠前
+tags: [Linux]
+categories: 操作系统
+cover: https://baozi-blog.oss-cn-shenzhen.aliyuncs.com/images/202210112126378.png
 ---
 
 假如有100台服务器，每次都用`ssh`输入用户名密码的方式登录，这样输入用户名密码就成为一件繁重的工作。
