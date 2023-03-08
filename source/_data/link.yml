@@ -1,11 +1,11 @@
 - class_name: 0.推荐网站🍔
   class_desc: 这里是最熟悉的小伙伴或者赞助商，当然是最前排啦
   link_list: 
-    - name: fomal🥝
-      link: https://www.fomal.cc/
-      avatar: https://www.fomal.cc/assets/avatar.webp
-      descr: Instead of looking up at the starry sky, it is better to be a star picker.
-      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg
+    # - name: fomal🥝
+    #   link: https://www.fomal.cc/
+    #   avatar: https://www.fomal.cc/assets/avatar.webp
+    #   descr: Instead of looking up at the starry sky, it is better to be a star picker.
+    #   siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg
     - name: 🧊小冰博客 #152
       offline: true
       link: https://zfe.space/

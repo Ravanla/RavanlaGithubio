@@ -9,20 +9,20 @@ type: "link"
 <!-- tab 🙋 butterfly-💭candy -->
 ```yml
     - name: Ravanla🐈‍⬛
-      link: https://www.fomal.cc/
-      avatar: https://www.fomal.cc/assets/avatar.webp
+      link: https://ravanla.github.io/
+      avatar: https://tuchuang.voooe.cn/images/2023/03/03/cat.png
       descr: Instead of looking up at the starry sky, it is better to be a star picker.
-      siteshot: https://source.fomal.cc/siteshot/www.fomal.cn.jpg
+      siteshot: https://tuchuang.voooe.cn/images/2023/03/08/f6b88705431cf98ae461b64923e7546.png
 ```
 <!-- endtab -->
 
-<!-- tab 🥗Volantis -->
+<!-- tab 🥗YML -->
 ```JSON
 {
   "title": "Ravanla🐈‍⬛",
-  "screenshot": "https://source.fomal.cc/siteshot/www.fomal.cn.jpg",
-  "url": "https://www.fomal.cc/",
-  "avatar": "https://www.fomal.cc/assets/avatar.webp",
+  "screenshot": "https://tuchuang.voooe.cn/images/2023/03/08/f6b88705431cf98ae461b64923e7546.png",
+  "url": "https://ravanla.github.io/",
+  "avatar": "https://tuchuang.voooe.cn/images/2023/03/03/cat.png",
   "description": "Instead of looking up at the starry sky, it is better to be a star picker.",
   "keywords": "Ravanla🐈‍⬛"
 }
@@ -34,10 +34,10 @@ type: "link"
 | 名称       | 数值                                              |
 | ---------- | ------------------------------------------------- |
 | 站点名称   | Ravanla🐈‍⬛                                         |
-| 站点截图   | https://source.fomal.cc/siteshot/www.fomal.cn.jpg |
-| 站点链接   | https://www.fomal.cc/                             |
-| 站长头像   | https://www.fomal.cc/assets/avatar.webp           |
-| 站点描述   | Future is now🍭🍭🍭                                  |
+| 站点截图   | https://tuchuang.voooe.cn/images/2023/03/08/f6b88705431cf98ae461b64923e7546.png |
+| 站点链接   | https://ravanla.github.io/                             |
+| 站长头像   | https://tuchuang.voooe.cn/images/2023/03/03/cat.png           |
+| 站点描述   | Instead of looking up at the starry sky, it is better to be a star picker.                                 |
 | 站点关键词 | Ravanla🐈‍⬛,个人博客,代码                           |
 
 <!-- endtab -->
