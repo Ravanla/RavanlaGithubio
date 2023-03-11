@@ -9,15 +9,6 @@ date: 2022-08-10 16:05:11
 
 <div class="about_page">
   <div align=center class="aspect-ratio">
-      <!-- <iframe src="https://player.bilibili.com/player.html?aid=474023258&&page=1&as_wide=1&high_quality=1&danmaku=0" 
-      scrolling="no" 
-      border="0" 
-      frameborder="no" 
-      framespacing="0" 
-      high_quality=1
-      danmaku=1 
-      allowfullscreen="true"> 
-      </iframe> -->
       <iframe src="https://www.bilibili.com/video/BV1PM4y1L7so/?vd_source=4ae9f2a80a07a640db3fdaff67882919" 
       scrolling="no" 
       border="0" 
