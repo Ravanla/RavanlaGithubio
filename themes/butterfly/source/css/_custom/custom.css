@@ -257,8 +257,8 @@ div#archive {
   /* rgb(174, 208, 238) */
   background: linear-gradient(  
     to right,     
-    rgba(174,208,238,0.1) 0%,
-    rgba(174,208,238,0.1) 100%); 
+    rgba(174,208,238,0) 0%,
+    rgba(174,208,238,0) 100%);
   /* background: linear-gradient(  
     to right,   
     rgb(174, 208, 238,0.95) 0%,   
