@@ -250,9 +250,9 @@ div#archive {
   /* background: linear-gradient(60deg, #ffd7e4 0, #c8f1ff 93%); */
   /* background: linear-gradient(60deg, #9abbcf 0, #c8f1ff 93%); */
   /* background: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55); 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
-  /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%); */
-  /* background: linear-gradient(44deg,#abdcff,#0396ff); */
-  /* background: linear-gradient(45deg,#abdcff 0,#0396ff 93%); */
+  /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%);
+  background: linear-gradient(44deg,#abdcff,#0396ff);
+  background: linear-gradient(45deg,#abdcff 0,#0396ff 93%); */
   /* rgb(174, 174, 238) 谷雨 0.6透明度，0%位置*/ 
   /* rgb(174, 208, 238) */
   background: linear-gradient(  

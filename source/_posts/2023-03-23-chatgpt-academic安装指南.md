@@ -40,4 +40,4 @@ python -m pip install -r requirements.txt
 # 运行
 python main.py
 ```
-
+![](https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/202303232041761.png)
