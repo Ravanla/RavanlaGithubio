@@ -1,15 +1,5 @@
----
-title: chatgpt_academic安装指南
-tags:
-  - null
-categories:
-  - null
-mathjax: true
-abbrlink: d1570e2d
-date: 2023-03-23 12:26:48
-description:
----
-![](https://github.com/Ravanla/drawing_bed/blob/main/230323/1.png)
+![cdf84fd414662bdf956172ff35feb53](http://wowoos.oss-cn-shenzhen.aliyuncs.com/img/cdf84fd414662bdf956172ff35feb53.png)
+
 ```python
 python --version
 ```
@@ -35,18 +25,19 @@ python -m pip install -r requirements.txt
 
 剩下的就是如何设置代理和api key
 
-![](https://github.com/Ravanla/drawing_bed/blob/main/230323/3.png)
+![4e1073f3b87e244f8a52ff910391e41](http://wowoos.oss-cn-shenzhen.aliyuncs.com/img/4e1073f3b87e244f8a52ff910391e41.png)
+
+
+[api-key](https://platform.openai.com/account/api-keys)
 
 代理设置
 
-![](https://github.com/Ravanla/drawing_bed/blob/main/230323/2.png)
 
-[api-key](https://platform.openai.com/account/api-keys)
+![a5976b23674144c730ab30c81144c02](http://wowoos.oss-cn-shenzhen.aliyuncs.com/img/a5976b23674144c730ab30c81144c02.png)
+
 
 ```git
 # 运行
 python main.py
 ```
-<script async src="//tuchuang.voooe.cn/sdk/pup.js" data-url="https://tuchuang.voooe.cn/upload">
-![a5976b23674144c730ab30c81144c02](D:\Typora\Insert Image\a5976b23674144c730ab30c81144c02.png)
-</script>
+
