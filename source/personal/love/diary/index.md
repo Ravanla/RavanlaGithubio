@@ -16,3 +16,9 @@ date: 2023-03-06 08:53:00
 ![](test.png)
 
 {% endgallery %}
+
+git add .
+
+git commit -m "完善SA模块"
+
+git push

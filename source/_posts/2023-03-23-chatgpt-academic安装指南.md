@@ -1,3 +1,6 @@
+---
+abbrlink: '0'
+---
 ![cdf84fd414662bdf956172ff35feb53](http://wowoos.oss-cn-shenzhen.aliyuncs.com/img/cdf84fd414662bdf956172ff35feb53.png)
 
 ```python
