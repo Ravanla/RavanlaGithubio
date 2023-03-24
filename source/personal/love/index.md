@@ -17,7 +17,7 @@ wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试! #密码�
 
 {% galleryGroup '日记' '一般都是吵架日记' '/personal/love/diary' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree05.jpeg %}
 
-{% galleryGroup '可爱瞬间' '超可爱' '/personal/love/diary' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree05.jpeg %}
+{% galleryGroup '可爱瞬间' '超可爱' '/personal/love/diary' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiSea01.jpeg %}
 
 <!-- 
 
@@ -27,6 +27,29 @@ https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree04.jp
 https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree03.jpeg
 https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree02.jpeg
 https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree01.jpeg 
+
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanawei22.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei21.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei20.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei19.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei14.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei15.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei18.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei17.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei16.jpeg
+https://wowoos.oss-cn-shenzhen.aliyuncs.com/aliyunimg/shanwei13.jpeg
+https://wowoos.oss-cn-shenzhen.aliyuncs.com/aliyunimg/shanwei12.jpeg
+https://wowoos.oss-cn-shenzhen.aliyuncs.com/aliyunimg/shanwei11.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei10.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei09.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei08.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei07.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei06.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei05.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei04.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei03.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei02.jpeg
+https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanwei01.jpeg
 
 -->
 
