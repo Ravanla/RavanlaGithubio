@@ -9,6 +9,7 @@ menu:
     标签: /tags/ || icon-sekuaibiaoqian || faa-tada
     分类: /categories/ || icon-fenlei || faa-tada
   休闲 || icon-pinweishenghuo || faa-tada || hide:
+    书: /life/books/ ||icon--article || faa-tada
     音乐: /life/music/ ||icon-yinle || faa-tada
     影院: /life/movies/ ||icon-dianying1 || faa-tada
     游戏: /life/games/ || icon-youxishoubing || faa-tada
