@@ -248,18 +248,28 @@ div#archive {
 /* 导航栏颜色 */
 #page-header.nav-fixed #nav {
   /* background: linear-gradient(60deg, #ffd7e4 0, #c8f1ff 93%); */
-  /* background: linear-gradient(60deg, #9abbcf 0, #c8f1ff 93%); */
-  /* background: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55); 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
-  /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%);
-  background: linear-gradient(44deg,#abdcff,#0396ff);
-  background: linear-gradient(45deg,#abdcff 0,#0396ff 93%); */
+
+  background: linear-gradient(60deg, #9abbcf 0, #c8f1ff 93%);
+
+  /* 支持 Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */
+  /* background: -webkit-linear-gradient(top, hsl(0, 80%, 70%), #bada55);  */
+  
+  
+  /* background: linear-gradient(45deg, #ffd7e4 20%, #c8f1ff 100%); */
+
+  /* background: linear-gradient(44deg,#abdcff,#0396ff); */
+
+  /* background: linear-gradient(45deg,#abdcff 0,#0396ff 93%); */
+
   /* rgb(174, 174, 238) 谷雨 0.6透明度，0%位置*/ 
   /* rgb(174, 208, 238) */
-  background: linear-gradient(  
+
+  /* background: linear-gradient(  
     to right,     
     rgba(174,208,238,0) 0%,
     rgba(174,208,238,0) 50%,
-    rgba(174,208,238,0) 100%);
+    rgba(174,208,238,0) 100%); */
+
   /* background: linear-gradient(  
     to right,   
     rgb(174, 208, 238,0.95) 0%,   
@@ -274,6 +284,17 @@ div#archive {
     rgba(174,208,238,0.8) 80%,  
     rgba(174,208,238,0.9) 90%,   
     rgba(174,208,238,0.95) 100%);   */
+
+  background: linear-gradient(
+    to right,
+    rgb(174, 208, 238,0.75) 0%,
+    rgb(174, 208, 238,0.65) 20%,
+    rgb(174, 208, 238,0.55) 40%,
+    rgb(174, 208, 238,0.45) 50%,
+    rgb(174, 208, 238,0.55) 60%,
+    rgb(174, 208, 238,0.65) 80%,
+    rgb(174, 208, 238,0.75) 100%,
+  );
   opacity: 0.95; /*导航栏 默认透明度*/
   backdrop-filter: var(--backdrop-filter);
 }
