@@ -18,8 +18,8 @@ wrong_pass_message: 抱歉, 这个密码看着不太对, 请再试试! #密码�
 
 {% galleryGroup '日记' '一般都是吵架日记' '/personal/love/diary' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiTree05.jpeg %}
 
-{% galleryGroup '可爱瞬间' '超可爱' '/personal/love/diary' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiSea01.jpeg %}
+{% galleryGroup '可爱瞬间' '超可爱' '/personal/love/pretty' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiSea01.jpeg %}
 
-
+{% galleryGroup '读书笔记' '笔记和想法' '/personal/love/note' https://cdn.jsdelivr.net/gh/Ravanla/drawing_bed@main/github_img/shanweiSea01.jpeg %}
 
 </div>

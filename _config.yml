@@ -56,7 +56,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -82,7 +82,7 @@ math:
   
 # 音乐插件
 aplayer: 
-  meting: true
+  meting: false
   asset_inject: false
                
                     
@@ -128,7 +128,8 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: butterfly
+# theme: butterfly
+theme: anzhiyu
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -172,7 +173,7 @@ algolia:
 # hexo-butterfly-swiper
 # see https://akilar.top/posts/8e1264d1/
 swiper:
-  enable: true # 开关
+  enable: false # 开关
   priority: 1 #过滤器优先权
   enable_page: / # 应用页面
   timemode: date #date/updated
@@ -229,7 +230,7 @@ nofollow:
 # hexo-filter-gitcalendar
 # see https://akilar.top/posts/1f9c68c9/
 gitcalendar:
-  enable: true # 开关
+  enable: false # 开关
   priority: 5 #过滤器优先权
   enable_page: /site/census/ # 应用页面
   # butterfly挂载容器
@@ -281,7 +282,7 @@ plugins:
 
 # 小冰分类磁贴
 magnet:
-  enable: true
+  enable: false
   priority: 2
   enable_page: /
   type: categories
@@ -320,7 +321,7 @@ magnet:
 # Live2D
 ## https://github.com/EYHN/hexo-helper-live2d
 live2d:
-  enable: true #开关插件版看板娘
+  enable: false #开关插件版看板娘
   scriptFrom: local # 默认
   pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)
   pluginJsPath: lib/ # 脚本文件相对与插件根目录路径
